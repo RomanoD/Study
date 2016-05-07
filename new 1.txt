@@ -1,0 +1,67 @@
+﻿
+-- 1
+SELECT name, price, discount, quantity, price * (100 - discount)/100 * quantity total
+FROM Products_Table
+WHERE name = 'Молоко' OR name = 'Хлеб'
+-- 2
+SELECT * 
+FROM Products_Table
+WHERE quantity > 10 AND date_of_delivery > DATEADD(DAY, -2, GETDATE()) 
+-- 3
+SELECT name, price
+FROM Products_Table
+WHERE date_of_delivery > DATEADD(Month, -1, GETDATE())
+-- 4
+SELECT name, price
+FROM Products_Table
+WHERE category ='Кондитерские изделия' AND NOT producer = 'Рошен'
+-- 5
+SELECT * 
+FROM Products_Table
+WHERE name LIKE 'К%' AND category LIKE '%А%'
+-- 6
+SELECT *
+FROM Products_Table
+WHERE name BETWEEN 'В%' AND 'Л%'
+-- 7
+SELECT *
+FROM Products_Table
+WHERE price < 50 AND 
+date_of_delivery BETWEEN '2016-03-01' AND GETDATE() - 1
+-- 8
+SELECT *
+FROM Products_Table
+WHERE category = 'Безалкогольные напитки' AND quantity > 100
+-- 9
+SELECT *
+FROM Products_Table
+WHERE price BETWEEN 100 AND 200 ORDER BY price
+-- 10
+UPDATE Products_Table
+SET price = price * (100 - 5)/100  
+-- 11
+UPDATE Products_Table
+SET date_of_delivery = GETDATE()
+WHERE date_of_delivery IS NULL
+-- 12
+DELETE FROM Products_Table
+WHERE quantity < 100 AND price > 70
+-- 13
+DELETE FROM Products_Table
+WHERE category = 'Кондитерские изделия' AND category = 'Алкогольные напитки'
+-- 14
+SELECT * FROM Products_Table
+WHERE name LIKE '%О%О%О%'
+-- 15
+DELETE FROM Products_Table
+WHERE name = '_____'
+-- 16
+DELETE FROM Products_Table
+WHERE date_of_delivery < DATEADD(month, -3, GETDATE())
+-- 17
+SELECT TOP(5) name, price, date_of_delivery 
+FROM Products_Table
+WHERE date_of_delivery < GETDATE() ORDER BY date_of_delivery desc
+-- 18
+DELETE FROM Products_Table
+WHERE producer IS NULL OR discount > 10
