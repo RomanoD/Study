@@ -1,3 +1,14 @@
+/*
+    Created by Roma Deschenko - RomanoD
+    Date: 25 May 2016
+    
+    Problem:
+        Check string if it is a palindrom or not.
+    Solution:
+        Works well even with strings like this: "Madam, I'm Adam".
+*/
+
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +26,9 @@ namespace IsPalindrom
             Console.WriteLine("Enter your string to check it out: ");
             string str = Console.ReadLine();
             
-            int x = 0;
+            int x = 0; //begining index of string
             bool flag = false;
-            for (int i = str.Length - 1; i > 0; i--)
+            for (int i = str.Length - 1; i > 0; i--) //checks indexes from the end of string
             {
                 if (str.ToLower()[i].Equals(str.ToLower()[x]))
                 {
@@ -25,7 +36,7 @@ namespace IsPalindrom
                     flag = true;
                 }
                 else if (flag == false)
-                    break;
+                    break; //in case of not equal symbols breaks out the loop
             }
             Console.WriteLine(flag ? "Yes, this string is a palindrome!" : 
                 "No, this string is not a palindrome.");
